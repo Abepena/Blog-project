@@ -25,7 +25,7 @@ class Post(models.Model):
         return self.title
 
 class Comment(models.Model):
-    post = models.ForeignKey('blog.Post', related_name = 'comment') # each comment aligns with a given Post
+    post = models.ForeignKey('blog.Post', related_name = 'comment',on_delete ='CASCADE',) # each comment aligns with a given Post
     author = models.CharField(max_length=200) #author of the comment is not the same as author of the Post
     text = models.TextField()
     create_date = models.DateTimeField(default=timezone.now())
