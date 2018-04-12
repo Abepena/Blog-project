@@ -1,11 +1,11 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
-from blog.models import Post, Comment
+from .models import Post, Comment
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse_lazy
-from blog.forms import PostForm
-from django.views.generic import (TemplateView, ListView
+from .forms import PostForm
+from django.views.generic import (TemplateView, ListView,
                                     DetailView,CreateView,
                                     UpdateView, DeleteView,)
 # Create your views here.
@@ -107,6 +107,6 @@ def comment_remove(request, pk):
 
 @login_required
 def post_publish(request, pk):
-    post = get_object_or_404(Post, pk=pk):
+    post = get_object_or_404(Post, pk=pk)
     post.publish
     redirect('post_detail',pk = 'pk')
