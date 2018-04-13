@@ -23,7 +23,7 @@
 
   <body>
     {# NAVBAR #}
-    <nav class="navbar navbar-expand-sm navbar-light bg-light techfont custom-navbar">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light techfont custom-navbar">
       <a class="navbar-brand bigbrand" href="{% url 'post_list' %}">My Blog</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
        <span class="navbar-toggler-icon"></span>
@@ -32,15 +32,15 @@
       <div class="container">
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
+            <li class="nav-item"><a class="nav-link" href="{% url 'admin:login' %}">Admin</a></li>
             <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">About</a></li>
-            <li class="nav-item"><a class="nav-link" href="https://www.github.com"></a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Github</a></li>
-            <li class="nav-item"><a class="nav-link" href="http://www.linkedin.com">LinkedIn</a></li>
+            <li class="nav-item"><a class="nav-link" href="https://github.com/Abepena/">Github</a></li>
+            <li class="nav-item"><a class="nav-link" href="https://www.linkedin.com/in/abraham-pe%C3%B1a-8027a05b/">LinkedIn</a></li>
           </ul>
 
         </div>
 
-        <ul class="navbar-nav ml-auto">
+        <ul class="navbar-nav mr-auto">
           {% if user.is_authenticated %}
           <li class="nav-item">
             <a href="{% url 'post_new' %}">New Post</a>

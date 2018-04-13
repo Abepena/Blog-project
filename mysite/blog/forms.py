@@ -3,7 +3,7 @@ from .models import Post, Comment
 
 class PostForm(forms.ModelForm):
 
-    class Meta():
+    class Meta:
         model = Post
         fields = ('author','title','text')
 
@@ -18,7 +18,7 @@ class PostForm(forms.ModelForm):
 
 class CommentForm(forms.ModelForm):
 
-    class Meta():
+    class Meta:
         model = Comment
         fields = ('author','text')
 
