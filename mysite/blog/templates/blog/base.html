@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 {% load staticfiles %}
 <html lang="en" dir="ltr">
-
   <head>
     <meta charset="utf-8">
     <title>Blog</title>
@@ -21,7 +20,7 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ubuntu" rel="stylesheet">
   </head>
 
-  <body>
+  <body class='loader'>
     {# NAVBAR #}
     <nav class="navbar navbar-expand-lg navbar-light bg-light techfont custom-navbar">
       <a class="navbar-brand bigbrand" href="{% url 'post_list' %}">My Blog</a>
@@ -31,45 +30,41 @@
 
       <div class="container">
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
           <ul class="navbar-nav mr-auto">
             <li class="nav-item"><a class="nav-link" href="{% url 'admin:login' %}">Admin</a></li>
             <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">About</a></li>
             <li class="nav-item"><a class="nav-link" href="https://github.com/Abepena/">Github</a></li>
             <li class="nav-item"><a class="nav-link" href="https://www.linkedin.com/in/abraham-pe%C3%B1a-8027a05b/">LinkedIn</a></li>
           </ul>
+          <p></p>
+          <ul class="navbar-nav ml-auto">
+            {% if user.is_authenticated %}
+            <li class="nav-item list-inline-item"><a class="nav-link" href="{% url 'post_new' %}">New Post</a></li>
+            <li class="nav-item list-inline-item"><a class="nav-link" href="{% url 'post_draft_list' %}">Drafts</a></li>
+            <li class="nav-item list-inline-item"><a class="nav-link" href="{% url 'logout' %}">Log Out</a></li>
+            <li class="nav-item list-inline-item">
+              Welcome: {{user.username}}
+            </li>
 
+            {% else %}
+            <li class="nav-item">
+              <a href="{% url 'login' %}"><span class="fas fa-user"></span></a>
+            </li>
+
+            {% endif %}
+          </ul>
         </div>
 
-        <ul class="navbar-nav mr-auto">
-          {% if user.is_authenticated %}
-          <li class="nav-item">
-            <a href="{% url 'post_new' %}">New Post</a>
-          </li>
-          <li class="nav-item">
-            <a href="{% url 'post_draft_list' %}">Drafts</a>
-          </li>
-          <li class="nav-item">
-            <a href="{% url 'logout' %}">Log Out</a>
-          </li>
-          <li class="nav-item">
-            Welcome: {{user.username}}
-          </li>
 
-          {% else %}
-          <li class="nav-item">
-            <a href="{% url 'login' %}"><span class="glyphicon glyphicon-user"></span></a>
-          </li>
-
-          {% endif %}
-        </ul>
 
       </div>
 
     </nav>
 
     {# CONTENT BLOCK #}
-    <div class="content">
-      <div class="row col-md-8">
+    <div class="content container vertical-center">
+      <div class="row col-md-12">
         <div class="blog_posts">
           {% block content %}
           {% endblock %}
@@ -81,6 +76,7 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
 
   </body>
 </html>

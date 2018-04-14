@@ -9,9 +9,9 @@
     <p>Your username and password didnt match! Please try again.</p>
   {% endif %}
 
-  <form action="{url 'login'}" method="URL">
+  <form action="{% url 'login' %}" method="POST">
     {% csrf_token %}
-      {% form.as_p %}
+      {{ form.as_p }}
       <input type="submit" class="btn btn-primary" value="Login">
       <input type="hidden" name="next" value="{{next}}">
 
